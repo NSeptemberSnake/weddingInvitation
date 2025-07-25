@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=8a469300-0c10-4c0e-b705-cc9be07fe762&lang=ru_RU" type="text/javascript"></script>
+    <link rel="icon" type="image/png" href="./src/images/favicn.png"/>
+    <link rel="stylesheet" href="./src/style.css">
+    <title>Denis & Alena</title>
+</head>
+<body>
+    <div class="container">
+        <section class="banner">
+            <div class="banner__content">
+                <p class="banner__names-his">Денис</p>
+                <div class="banner__date-img"></div>
+                <p class="banner__names-her">Алена</p>
+            </div>
+        </section>
+        <section class="dear">
+            <div class="dear__background">
+                <p class="large_text right_text">Дорогие наши <br><span class="curve_text">родные и друзья!</span></p>
+                <p class="large_text">Мы женимся!</p>
+                <p class="simple_text left_text">И очень хотим разделить с вами этот счастливый праздник.<br>Ждём вас на нашей свадьбе!</p>
+                <p class="curve_text date_text">18.09.2025</p>
+            </div>
+        </section>
+        <section class="timetable">
+            <h3 class="large_text left_text">План <br><span class="curve_text">мероприятия</span></h3>
+            <div class="timetable__wrapper">
+                <div class="timetable__column">
+                    <div class="timetable__step step_one">
+                        <p class="timetable__step-time large_text">12:00</p>
+                        <p class="timetable__step-text">Text</p>
+                    </div>
+                </div>
+                <div class="timetable__column">
+                    <div class="timetable__step step_two">
+                        <p class="timetable__step-time large_text">16:00</p>
+                        <p class="timetable__step-text">Text</p>
+                    </div>
+                    <div class="timetable__step step_tree">
+                        <p class="timetable__step-time large_text">18:00</p>
+                        <p class="timetable__step-text">Text</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="location">
+            <div class="location__image"></div>
+            <div class="location__background">
+                <h3 class="title_text large_text right_text">Место <br><span class="curve_text">проведения</span></h3>
+                <div class="location__item">
+                    <div class="location__item-content">
+                        <p class="location__item-name large_text left_text">Венчание</p>
+                        <div class="location__item-line"></div>
+                    </div>
+                    <a class="location__item-address left_text" href="https://yandex.by/maps/-/CHTFV-IU" target="_blank">агрогородок Гервяты, ул. Набережная, 2</a>
+                </div>
+                <div class="location__item">
+                    <div class="location__item-content">
+                        <div class="location__item-line"></div>
+                        <p class="location__item-name large_text right_text">Банкет</p>
+                    </div>
+                    <a class="location__item-address right_text" href="https://yandex.by/maps/-/CHTF6Y5v" target="_blank">деревня Ореховка, 50А</a>
+                </div>
+            </div>
+            <div id="map"></div>
+        </section>
+        <section class="dresscode">
+            <h3 class="title_text large_text">Дресс-код</h3>
+            <p class="dresscode__text">Пожалуйста, в этот торжественный день поддержите нас вашими улыбками, а также красивыми нарядами в представленной палитре</p>
+            <div class="dresscode__palette">
+                <div class="dresscode__palette-item color_one"></div>
+                <div class="dresscode__palette-item color_two"></div>
+                <div class="dresscode__palette-item color_three"></div>
+                <div class="dresscode__palette-item color_four"></div>
+                <div class="dresscode__palette-item color_five"></div>
+                <div class="dresscode__palette-item color_six"></div>
+                <div class="dresscode__palette-item color_seven"></div>
+                <div class="dresscode__palette-item color_eight"></div>
+            </div>
+        </section>
+        <section class="questions" id="questions">
+            <div class="form-wrapper" id="form-wrapper">
+                <h3 class="title_text large_text">Ваше <br><span class="curve_text">присутствие</span></h3>
+                <p class="questions__text">Подтвердите свое присутствие и ответьте на несколько вопросов.<br> Это поможет в организации торжества!<br> Будем ждать ваш ответ до 10.09.2025</p>
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdC3yQdl_piDmI2R_ZJVui8VoWhy3IZCeiGihd3f57eNxrPTA/viewform?embedded=true" width="108%" height="671" frameborder="0" marginheight="0" marginwidth="0">Загрузка…</iframe>
+            </div>
+        </section>
+        <section class="timer_block" id="timer">
+            <div class="timer-wrapper">
+                <h3 class="title_text large_text left_text">До свадьбы осталось</h3>
+                <div class="timer__box">
+                    <div class="timer">
+                        <div class="curve_text timer__label">Дни</div>
+                        <div class="large_text timer__value days"></div>
+                    </div>
+                    <div class="timer">
+                        <div class="curve_text timer__label">Часы</div>
+                        <div class="large_text timer__value hours"></div>
+                    </div>
+                    <div class="timer">
+                        <div class="curve_text timer__label">Минуты</div>
+                        <div class="large_text timer__value minutes"></div>
+                    </div>
+                    <div class="timer">
+                        <div class="curve_text timer__label">Секунды</div>
+                        <div class="large_text timer__value seconds"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        window.onload = function() {
+            const deadline = new Date("September 18, 2025 00:00:00").getTime();
+            initializeClock('timer', deadline);
+        }
+
+        function updateTimer(deadline) {
+            const now = new Date().getTime();
+            const t = deadline - now;
+
+            const days = Math.floor(t / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((t % (1000 * 60)) / 1000);
+
+            return {
+                'total': t,
+                'days': days,
+                'hours': hours,
+                'minutes': minutes,
+                'seconds': seconds
+            };
+        }
+
+        function initializeClock(id, deadline) {
+            const clock = document.getElementById(id);
+            const daysSpan = clock.querySelector('.days');
+            const hoursSpan = clock.querySelector('.hours');
+            const minutesSpan = clock.querySelector('.minutes');
+            const secondsSpan = clock.querySelector('.seconds');
+
+            function updateClock() {
+                const t = updateTimer(deadline);
+
+                daysSpan.innerHTML = ('0' + t.days).slice(-2);
+                hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+                minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+                secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+                if (t.total <= 0) {
+                    clearInterval(timeinterval);
+                }
+            }
+
+            updateClock();
+            const timeinterval = setInterval(updateClock, 1000);
+        }
+
+        ymaps.ready(init);
+        function init() {
+            var myMap = new ymaps.Map("map", {
+                center: [54.611642, 26.262100],
+                zoom: 9,
+                controls: []
+            });
+
+            var myPlacemark = new ymaps.Placemark([54.687086, 26.144452], {
+                hintContent: 'агрогородок Гервяты, Набережная ул., 2',
+                balloonContent: 'агрогородок Гервяты, Набережная ул., 2'
+            }, {
+                iconLayout: 'default#image',
+                iconImageHref: './src/images/map.png', 
+                iconImageSize: [30, 46],
+                iconImageOffset: [-13, -40]
+            });
+
+            var myPlacemark2 = new ymaps.Placemark([54.491999, 26.359725], {
+                hintContent: 'деревня Ореховка, 50А',
+                balloonContent: 'деревня Ореховка, 50А'
+            }, {
+                iconLayout: 'default#image',
+                iconImageHref: './src/images/map.png', 
+                iconImageSize: [30, 46], 
+                iconImageOffset: [-13, -40] 
+            });
+
+            myMap.geoObjects.add(myPlacemark);
+            myMap.geoObjects.add(myPlacemark2);
+        }
+    </script>
+</body>
+</html>
