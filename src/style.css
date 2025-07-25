@@ -538,9 +538,9 @@ body {
 }
 
 .dresscode__text {
-    font-size: 18px;
+    font-size: 16px;
     text-align: center;
-    max-width: 400px;
+    max-width: 600px;
     line-height: 1.3;
     color: var(--dark-text);
 }
@@ -593,35 +593,35 @@ body {
 }
 
 .dresscode__palette-item.color_one {
-    background-color: #656e63;
-}
-
-.dresscode__palette-item.color_two {
-    background-color: #525c22;
-}
-
-.dresscode__palette-item.color_three {
-    background-color: #3b3b19;
-}
-
-.dresscode__palette-item.color_four {
-    background-color: #bab0a4;
-}
-
-.dresscode__palette-item.color_five {
-    background-color: #9e8973;
-}   
-
-.dresscode__palette-item.color_six {
     background-color: #5a5e49;
 }
 
+.dresscode__palette-item.color_two {
+    background-color: #9e8973;
+}
+
+.dresscode__palette-item.color_three {
+    background-color: #494923;
+}
+
+.dresscode__palette-item.color_four {
+    background-color: #525c22;
+}
+
+.dresscode__palette-item.color_five {
+    background-color: #bf9f95;
+}   
+
+.dresscode__palette-item.color_six {
+    background-color: #c2b3a3;
+}
+
 .dresscode__palette-item.color_seven {
-    background-color: #9a968f;
+    background-color: #81827a;
 }
 
 .dresscode__palette-item.color_eight {
-    background-color: #807d76;
+    background-color: #b6b8ae;
 }
 
 @media (max-width: 440px) { 
@@ -640,6 +640,55 @@ body {
     }
 
     .dresscode__text {
+        font-size: 14px;
+    }
+}
+
+.recomendations {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin: 100px 0;
+}
+
+.recomendations .title_text {
+    font-size: 60px;
+    line-height: 1;
+    color: var(--dark-text);
+    margin-bottom: 20px;
+}
+
+.recomendations__text {
+    font-size: 16px;
+    line-height: 1.3;
+    color: var(--dark-text);
+    display: flex;
+    gap: 20px;
+}
+
+.recomendations__text::before {
+    display: block;
+    content: '';
+    width: 100px;
+    height: 100px;
+    background-image: url("./images/mini-branch.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    flex-shrink: 0;
+}
+
+@media (max-width: 440px) { 
+    .recomendations .title_text {
+        font-size: 45px;
+    }
+
+    .recomendations__text::before {
+        width: 80px;
+        height: 80px;
+    }
+
+    .recomendations__text {
         font-size: 14px;
     }
 }
