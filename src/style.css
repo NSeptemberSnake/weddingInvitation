@@ -881,3 +881,37 @@ body {
         max-width: 150px;
     }
 }
+
+.appear-animation {
+    opacity: 0;
+    animation: appear 2.5s forwards 0.5s;
+}
+
+.from-left-animation {
+    opacity: 0;
+    transform: translateX(-150%);
+    animation: appear 2s forwards 0.5s,
+                fromLeft 2.5s forwards 0.5s;
+}
+
+.from-right-animation {
+    opacity: 0;
+    transform: translateX(150%);
+    animation: appear 2s forwards 0.5s,
+                fromRight 2.5s forwards 0.5s;
+}
+
+@keyframes appear {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+@keyframes fromLeft {
+  0% {transform: translateX(-150%);}
+  100% {transform: translateX(0);}
+}
+
+@keyframes fromRight {
+  0% {transform: translateX(150%);}
+  100% {transform: translateX(0);}
+}
