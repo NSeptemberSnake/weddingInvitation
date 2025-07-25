@@ -9,7 +9,10 @@
     <title>Denis & Alena</title>
 </head>
 <body>
-    <div class="container">
+    <div id="loader">
+        <div class="loader"></div>
+    </div>
+    <div class="container" id="content">
         <section class="banner">
             <div class="banner__content">
                 <p class="banner__names-his from-right-block">Денис</p>
@@ -116,11 +119,6 @@
     </div>
 
     <script>
-        window.onload = function() {
-            const deadline = new Date("September 18, 2025 00:00:00").getTime();
-            initializeClock('timer', deadline);
-        }
-
         function updateTimer(deadline) {
             const now = new Date().getTime();
             const t = deadline - now;
@@ -195,34 +193,33 @@
             myMap.geoObjects.add(myPlacemark2);
         }
 
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    if (entry.target.classList.contains('appeared-block')) {
-                        entry.target.classList.add('appear-animation');
-                    } else if (entry.target.classList.contains('from-right-block')) {
-                        entry.target.classList.add('from-right-animation');
-                    } else if (entry.target.classList.contains('from-left-block')) {
-                        entry.target.classList.add('from-left-animation');
+        function setupAnimations() {
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        if (entry.target.classList.contains('appeared-block')) {
+                            entry.target.classList.add('appear-animation');
+                        } else if (entry.target.classList.contains('from-right-block')) {
+                            entry.target.classList.add('from-right-animation');
+                        } else if (entry.target.classList.contains('from-left-block')) {
+                            entry.target.classList.add('from-left-animation');
+                        }
                     }
-                }
+                });
             });
-        });
 
-        const appearedBlocks = document.querySelectorAll('.appeared-block');
-        appearedBlocks.forEach(block => {
-            observer.observe(block);
-        });
+            document.querySelectorAll('.appeared-block, .from-right-block, .from-left-block').forEach(block => {
+                observer.observe(block);
+            });
+        }
 
-        const fromRightBlocks = document.querySelectorAll('.from-right-block');
-        fromRightBlocks.forEach(block => {
-            observer.observe(block);
-        });
-
-        const fromLeftBlocks = document.querySelectorAll('.from-left-block');
-        fromLeftBlocks.forEach(block => {
-            observer.observe(block);
-        });
+        window.onload = function() {
+            document.getElementById('loader').style.display = 'none';
+            document.getElementById('content').classList.add('loaded');
+            const deadline = new Date("September 18, 2025 00:00:00").getTime();
+            initializeClock('timer', deadline);
+            setupAnimations();
+        };        
     </script>
 </body>
 </html>
